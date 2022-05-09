@@ -1,0 +1,72 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#contenedor-formulario {
+    display: inline-block;
+    width: 40%;
+    height: 100%;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-top: 15px;
+}
+
+form {
+    min-width: 150px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+    margin: 0 auto;
+}
+
+.campo-formulario {
+    width: 100%;
+}
+
+.radio {
+    display: block;
+    margin-top: 5px;
+}
+
+#boton-enviar {
+    margin-top: 20px;
+}
+
+#lista-personas {
+    display: inline-block;
+    background-color: navy;
+    width: 60%;
+    height: 100%;
+    overflow: auto;
+    vertical-align: top;
+    box-sizing: border-box;
+    text-align: right;
+    padding: 15px 10px;
+}
+
+.elemento-lista {
+    white-space: nowrap;
+}
+
+.contenedor-datos {
+    display: inline-block;
+}
+
+.dato-persona {
+    display: inline-block;
+    margin-left: 10px;
+    color: white;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.contenedor-botones {
+    display: inline-block;
+}
+
+.boton-secundario {
+    display: inline-block;
+}

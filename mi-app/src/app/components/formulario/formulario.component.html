@@ -1,0 +1,67 @@
+<div id="contenedor-formulario">
+    <form [formGroup]="formulario" (ngSubmit)="enviar()">
+        <h1>Formulario</h1>
+
+        <mat-form-field class="campo-formulario" appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput id="nombre" formControlName="nombre" name="nombre">
+        </mat-form-field>
+
+        <mat-form-field class="campo-formulario" appearance="fill">
+            <mat-label>Apellidos</mat-label>
+            <input matInput id="apellidos" formControlName="apellidos" name="apellidos">
+        </mat-form-field>
+
+        <mat-form-field class="campo-formulario" appearance="fill">
+            <mat-label>Edad</mat-label>
+            <input type="number" matInput id="edad" formControlName="edad" name="edad">
+        </mat-form-field>
+
+        <mat-form-field class="campo-formulario" appearance="fill">
+            <mat-label>DNI</mat-label>
+            <input matInput id="dni" formControlName="dni" name="dni">
+        </mat-form-field>
+
+        <mat-form-field class="campo-formulario" appearance="fill">
+            <mat-label>Cumpleaños</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="cumpleanos" id="cumpleanos" name="cumpleanos">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="campo-formulario" appearance="fill">
+            <mat-label>Color Favorito</mat-label>
+            <input matInput id="colorFavorito" formControlName="colorFavorito" name="colorFavorito">
+        </mat-form-field>
+
+        <mat-radio-group id="sexo" formControlName="sexo" name="sexo">
+            <mat-label>Sexo:</mat-label>
+            <mat-radio-button class="radio" value="Hombre">Hombre</mat-radio-button>
+            <mat-radio-button class="radio" value="Mujer">Mujer</mat-radio-button>
+            <mat-radio-button class="radio" value="Otro">Otro</mat-radio-button>
+            <mat-radio-button class="radio" value="No-especificado">No especificado</mat-radio-button>
+        </mat-radio-group>
+
+        <button type="submit" mat-raised-button color="primary" id="boton-enviar">Enviar</button>
+    </form>
+</div>
+
+<mat-list id="lista-personas">
+    <mat-list-item *ngFor="let p of personas" class="elemento-lista">
+        <div class="contenedor-botones">
+            <button class="boton-secundario" mat-raised-button color="basic" (click)="p == personaMod ? terminarModificacion($event, p) : modificar($event, p)">{{ p == personaMod ? "Hecho" : "Modificar" }}</button> &nbsp;  
+            <button class="boton-secundario" mat-raised-button color="warn" (click)="eliminar($event, p)">Eliminar</button>
+        </div>
+
+        <div class="contenedor-datos">
+            <span class="dato-persona">{{ p == personaMod ? formulario.value.nombre : p.nombre }} |</span>
+            <span class="dato-persona">{{ p == personaMod ? formulario.value.apellidos : p.apellidos }} |</span>
+            <span class="dato-persona">{{ p == personaMod ? formulario.value.edad : p.edad }} |</span>
+            <span class="dato-persona">{{ p == personaMod ? formulario.value.dni : p.dni }} |</span>
+            <span class="dato-persona">{{ p == personaMod ? formulario.value.cumpleanos.toLocaleString([], {year: "numeric", month: "2-digit", day: "2-digit"}) : p.cumpleanos.toLocaleString([], {year: "numeric", month: "2-digit", day: "2-digit"}) }} |</span>
+            <span class="dato-persona">{{ p == personaMod ? formulario.value.colorFavorito : p.colorFavorito }} |</span>
+            <span class="dato-persona">{{ p == personaMod ? formulario.value.sexo : p.sexo }} </span>
+        </div>
+    </mat-list-item>
+</mat-list>
